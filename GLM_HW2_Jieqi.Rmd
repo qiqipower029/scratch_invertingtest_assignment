@@ -1,0 +1,24 @@
+---
+title: "GLM HW2"
+author: "Jieqi Tu (jtu22)"
+date: "2/25/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## 4.11 (b)
+```{r Q2}
+response = c(rep(0, 25))
+```
+
+#### Inverting Wald test
+```{r Wald}
+fit.binomial = glm(response~1, family = "binomial")
+```
+
