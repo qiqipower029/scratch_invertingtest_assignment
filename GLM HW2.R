@@ -12,14 +12,15 @@ simple_model <- lm(y~x)
 correct_model <- lm(y~poly(x,5))
 ## visualization
 xy <- data.frame(x,y,true_y=true_y)
-theme_set(theme_minimal())
+
 xy %>% ggplot() + 
   aes(x = x, y = y) + 
   geom_point() + 
   geom_smooth(method = "lm", formula = y~x, se = F, aes(color="Simple model")) + 
   geom_smooth(method = "lm", formula = y~poly(x, 5), se = F, aes(color="Correct model")) +
   geom_line(aes(x = x, y = true_y, color="True relationship"), size = 1) +
-  scale_colour_manual(name="legend", values=c("blue", "red", "green"))
+  scale_colour_manual(name="legend", values=c("blue", "red", "green")) + theme_bw()
+summary(correct_model)
 
 ## quality of fit
 mean(abs(simple_model$fitted.values - y))
